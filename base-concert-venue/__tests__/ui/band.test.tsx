@@ -14,3 +14,13 @@ test('band component displays correct band information', async() => {
     // more assertions can be added here to check for other band information like genre, members, etc.
 
 });
+
+test('band component displays error message when error is provided', async() => {
+    
+    render(<BandComponent band={null} error={'EVERYTHING IS FINE'}/>);
+    const error = screen.getByRole('heading',
+        { name: /everything is fine/i }
+    );
+    expect(error).toBeInTheDocument();
+
+});
